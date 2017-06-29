@@ -7,7 +7,7 @@ from Chart import make_chart,Client
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(('192.168.1.251', 13668))
 s.listen(5)
-print('Waiting for connection...')
+print('Waiting for connection....')
 clients = dict()
 
 
