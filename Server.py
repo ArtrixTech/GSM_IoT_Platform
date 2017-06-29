@@ -1,15 +1,13 @@
 import socket
 import threading
 import time
-from Chart import make_chart
-from collections import namedtuple
+from Chart import make_chart,Client
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(('192.168.1.251', 13668))
 s.listen(5)
 print('Waiting for connection...')
-Client = namedtuple("client", ['temp', 'pres', 'dust', 'humi'])
 clients = dict()
 
 
@@ -96,7 +94,7 @@ def process_connection(sock, addr):
                     sensor.pres.append(
                         {"time": stamp, "argument": cut_string(content, "P", "E")})
                     clients[device_id] = sensor
-                make_chart(device_id)
+                make_chart(device_id,clients)
     sock.close()
     # print('Connection from %s:%s closed.' % addr)
 

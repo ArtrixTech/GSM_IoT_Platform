@@ -1,4 +1,8 @@
-def make_chart(device_id):
+from collections import namedtuple
+Client = namedtuple("client", ['temp', 'pres', 'dust', 'humi'])
+
+
+def make_chart(device_id,clients):
 
     _MAX_LABEL_ = 15
 
